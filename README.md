@@ -19,10 +19,19 @@ Follow these steps to use the scraper:
 * in the `config` directory, open the file called `Config.js` 
 * this file should export a module `Config` with the properties `baseUrl` (String) and `urlPaths` (String Array)  
 
-### 2: Create the data models
+### 2: Create the data models and controller functions
 
 * in `models/`, add modules that export constructors for the type of data you want to store
+* in `lib/`, add modules that take the HTML data and use it to create instances of the models
 
-### 3: Run the scraper
+### 3: Check the flow in index.js
+
+The flow should be:
+
+1. HTML is fetched
+2. Necessary operations are performed to create instances of the models from HTML data
+3. Functions are called that transform the JS objects to JSON strings and write to file 
+
+### 4: Run the scraper
 
 * `npm start`
