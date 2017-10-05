@@ -1,11 +1,14 @@
 'use strict';
 
-module.exports = function(q, a, rightA) {
+
+const Question = function (q, a, rightA) {
 
     return {
-        question: q,
-        answer: a,
+        questionText: q,
+        answerAlternatives: a,
         rightAnswer: rightA
     };
 
 }
+
+module.exports = Question;

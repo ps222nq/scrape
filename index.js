@@ -7,7 +7,13 @@ const ExtractElementObject = require('./scraper/ExtractElementObject');
 const stringToAnswerAlts = require('./lib/stringToQuestionAlternatives');
 const stringToRightAnswer = require('./lib/stringToRightAnswer');
 
-
+// TODO
+// Move all this into its own controller since it is now working properly
+// Then get the filesystem writing started here instead
+// Also get rid of all the console logging
+//index should just get the html, then call a controller that handles all the cleaning of data
+//after that call a controller that handles the writing to filesystem
+//10 lines tops
    FetchPage(config.baseUrl + config.urlPaths[0])
     .then(function(pageData){
         let pageObject = MapHTMLToCheerio(pageData);
