@@ -4,7 +4,8 @@ const config = require('./config/Config');
 const FetchPage = require('./scraper/FetchPage');
 const MapHTMLToCheerio = require('./scraper/MapHTMLToCheerio');
 const ExtractElementObject = require('./scraper/ExtractElementObject');
-const slicer = require('./lib/stringToQuestionAlternatives');
+const stringToAnswerAlts = require('./lib/stringToQuestionAlternatives');
+const stringToRightAnswer = require('./lib/stringToRightAnswer');
 
 
    FetchPage(config.baseUrl + config.urlPaths[0])
@@ -20,7 +21,7 @@ const slicer = require('./lib/stringToQuestionAlternatives');
         let selectorForAnswers = '.entry-content p';
         let extractedForAnswers = ExtractElementObject(pageObject, selectorForAnswers);
         let answersText = extractedForAnswers.text();
-        let alts = slicer(answersText);
+        let alts = stringToAnswerAlts(answersText);
         for (let i = 0; i < 4; i += 1){
             console.log(alts[i].answerAlternativeId + ": " + alts[i].answerAlternativeText);
         }
@@ -28,7 +29,8 @@ const slicer = require('./lib/stringToQuestionAlternatives');
         let selectorForRightAnswer = '.hidden-div b'
         let extractedForRightAnswer = ExtractElementObject(pageObject, selectorForRightAnswer);
         let rightAnswerText = extractedForRightAnswer['0'].children[0].data;
-        console.log('right answer: ' + rightAnswerText);
+        let answ = stringToRightAnswer(rightAnswerText);
+        console.log('right answer: ' + answ.answerAlternativeId + ") " + answ.answerAlternativeText);
     });
  
 
