@@ -6,8 +6,6 @@ module.exports = function(url) {
 
     return rp(url)
     .then(function(htmlString) {
-        console.log('fetching!');
-        //console.log(htmlString);
         return htmlString;
       })
     .catch(function(err) {
