@@ -1,7 +1,11 @@
 'use strict';
 
-const cheerio = require('cheerio');
-const request = require('request');
+// const cheerio = require('cheerio');
+// const request = require('request');
 const config = require('./config/Config');
+const FetchPage = require('./scraper/FetchPage');
 
-console.log(config.base_url);
+FetchPage(config.baseUrl)
+    .then(function(res)
+        {console.log(res)}
+    );
